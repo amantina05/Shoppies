@@ -1,7 +1,7 @@
 {
-  "name": "boilermaker",
+  "name": "Shoppies",
   "version": "2.0.0",
-  "description": "Some boilerplate code to get you started - get shakin'!",
+  "description": "A webpage that can search OMDB for movies, and allow the user to save their favourite films they feel should be up for nomination. When they've selected 5 nominees they should be notified they're finished.",
   "engines": {
     "node": "~12.11.1"
   },
