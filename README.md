@@ -6,7 +6,7 @@
 
 #### Check out my deployed web app:
 
-[Shoppies](https://together-connect.herokuapp.com/ 'Connections')
+[Shoppies](https://shoppies.herokuapp.com/ 'Shoppies')
 
 #### Marketing copy:
 
