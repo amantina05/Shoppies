@@ -6,7 +6,8 @@ export default class search extends Component {
     this.state = {
       keyword: '',
       movies: [],
-      nominees: []
+      nominees: [],
+      disabledNominate: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -14,6 +15,7 @@ export default class search extends Component {
     this.renderMovies = this.renderMovies.bind(this)
     this.clickNominate = this.clickNominate.bind(this)
     this.removeNominate = this.removeNominate.bind(this)
+    this.banner = this.banner.bind(this)
   }
   handleChange = event =>
     this.setState({[event.target.name]: event.target.value})
@@ -41,14 +43,26 @@ export default class search extends Component {
 
   clickNominate = movie => {
     // console.log('added')
-    // console.log(this.state.movies)
+    console.log(this.state.movies)
     const test = [...this.state.nominees, movie]
-    this.setState({nominees: test})
+
+    // //if movie has been added to nominations then disable
+    // if (this.state.disabledNominate === false) {
+    //   this.setState({nominees: test, disabledNominate: true})
+    // } else {
+    //   this.setState({nominees: test, disabledNominate: false})
+    // }
+
+    if (this.state.nominees.length >= 5) {
+      // this.setState({nominees: test})
+      this.banner()
+    } else {
+      this.setState({nominees: test})
+    }
   }
 
   removeNominate = imdbID => {
     // event.preventDefault()
-    console.log(imdbID)
     console.log('removed')
     const curr = this.state.nominees.filter(
       nominee => nominee.imdbID !== imdbID
@@ -59,7 +73,12 @@ export default class search extends Component {
     // console.log(this.state.nominees)
   }
 
+  banner = () => {
+    alert('You have reached maximum amount of nominations.')
+  }
   render() {
+    // const disabledNominate = this.state.movies.includes(this.state.movies)
+    // console.log(disabledNominate)
     return (
       <div>
         <div className="container1">
@@ -75,7 +94,7 @@ export default class search extends Component {
               value={this.state.keyword}
               onChange={this.handleChange}
             />
-            <button onClick={this.findMovie} type="button">
+            <button onClick={this.findMovie} type="submit" display="none">
               Search
             </button>
           </form>
@@ -89,7 +108,13 @@ export default class search extends Component {
                 <p>
                   {movie.Title} ({movie.Year})
                 </p>
-                <button onClick={() => this.clickNominate(movie)} type="button">
+                <img src={movie.Poster} height="50" width="40" />
+                <button
+                  value={null}
+                  onClick={() => this.clickNominate(movie)}
+                  disabled={this.state.disabledNominate}
+                  type="button"
+                >
                   Nominate
                 </button>
               </li>
