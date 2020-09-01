@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Nominations from './nominations'
 
 export default class search extends Component {
   constructor() {
@@ -43,8 +44,9 @@ export default class search extends Component {
 
   clickNominate = movie => {
     // console.log('added')
-    console.log(this.state.movies)
+    // console.log(this.state.movies)
     const test = [...this.state.nominees, movie]
+    // this.setState({nominees: test})
 
     // //if movie has been added to nominations then disable
     // if (this.state.disabledNominate === false) {
@@ -56,9 +58,8 @@ export default class search extends Component {
     if (this.state.nominees.length >= 5) {
       // this.setState({nominees: test})
       this.banner()
-    } else {
-      this.setState({nominees: test})
     }
+    this.setState({nominees: test})
   }
 
   removeNominate = imdbID => {
@@ -121,6 +122,7 @@ export default class search extends Component {
             ))}
           </ul>
         </div>
+        <div>{/* <Nominations /> */}</div>
         <div className="container3">
           <h3>Nominations</h3>
           <ul className="list">

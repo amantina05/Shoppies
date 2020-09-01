@@ -9,5 +9,6 @@ export {default as Shoppies} from './shoppies'
 export {default as Search} from './search'
 export {default as Results} from './results'
 export {default as Nominations} from './nominations'
+export {default as Profile} from './profile'
 
 export {Login, Signup} from './auth-form'

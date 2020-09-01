@@ -7,10 +7,13 @@ export default class search extends Component {
   render() {
     return (
       <div className="container">
-        <h1> The Shoppies</h1>
+        <center>
+          {/* <h1> The Shoppies</h1> */}
+          <br />
+        </center>
         <Search />
-        {/* <Results />
-        <Nominations /> */}
+        {/* <Results /> */}
+        {/* <Nominations /> */}
       </div>
     )
   }
