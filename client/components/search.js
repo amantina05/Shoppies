@@ -20,7 +20,6 @@ export default class search extends Component {
   }
   handleChange = event =>
     this.setState({[event.target.name]: event.target.value})
-  // console.log(event.target.value)
 
   handleSubmit = event => {
     event.preventDefault()
@@ -35,16 +34,10 @@ export default class search extends Component {
     fetch(`http://www.omdbapi.com/?apikey=81340766&s=${this.state.keyword}`)
       .then(response => response.json())
       .then(this.renderMovies)
-  // .then(this.clickNominate)
-  // console.log(this.state.keyword)
 
   renderMovies = response => this.setState({movies: response.Search})
-  // console.log(movies)
-  // console.log(response.Search)
 
   clickNominate = movie => {
-    // console.log('added')
-    // console.log(this.state.movies)
     const test = [...this.state.nominees, movie]
     // this.setState({nominees: test})
 
@@ -64,29 +57,24 @@ export default class search extends Component {
 
   removeNominate = imdbID => {
     // event.preventDefault()
-    console.log('removed')
     const curr = this.state.nominees.filter(
       nominee => nominee.imdbID !== imdbID
     )
     this.setState({
       nominees: curr
     })
-    // console.log(this.state.nominees)
   }
 
   banner = () => {
     alert('You have reached maximum amount of nominations.')
   }
+
   render() {
-    // const disabledNominate = this.state.movies.includes(this.state.movies)
-    // console.log(disabledNominate)
     return (
       <div>
         <div className="container1">
           <form onSubmit={this.handleSubmit}>
-            {/* <form> */}
             <h4>Movie title</h4>
-            {/* <label htmlFor="filter"></label> */}
             <input
               className="search-bar"
               type="text"
